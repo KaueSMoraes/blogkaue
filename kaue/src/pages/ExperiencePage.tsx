@@ -28,7 +28,7 @@ function ExperiencePage() {
           name: "Platform Builders",
           position: "Backend Developer Pleno",
           period: "2025 - Presente",
-          description: "Na Builders, atuo como Desenvolvedor Backend especialista no ecossistema .NET/C# para construir e manter microsserviços escaláveis, utilizando Redis, MuleSoft para integrações e implantando soluções na Google Cloud (GCP).",
+          description: "Na Platform Builders, atuo como Desenvolvedor Backend especialista no ecossistema .NET/C# para construir e manter microsserviços escaláveis, utilizando Redis, MuleSoft para integrações e implantando soluções na Google Cloud (GCP).",
           details: [
             "Desenvolvimento de microsserviços escaláveis utilizando .NET Core e .NET 6+",
             "Implementação de cache distribuído com Redis para otimização de performance",
@@ -41,7 +41,7 @@ function ExperiencePage() {
         agenda: {
           name: "Agenda Assessoria",
           position: "Desenvolvedor Full Stack",
-          period: "Out 2024 - Set 2025",
+          period: "Out 2024 - Jan 2025",
           description: "Na Agenda Assessoria, atuei como Desenvolvedor Full Stack, trabalhando tanto com desenvolvimento mobile quanto web. Esta experiência me permitiu expandir significativamente meu conhecimento em tecnologias modernas e práticas de desenvolvimento.",
           details: [
             "Desenvolvimento de aplicações mobile utilizando Flutter e Dart",
