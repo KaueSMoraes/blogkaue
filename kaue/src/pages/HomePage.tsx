@@ -164,8 +164,10 @@ function HomePage() {
             sx={{ 
               display: 'grid', 
               gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' }, 
-              gap: 1,
-              flex: 1
+              gap: { xs: 2, sm: 1 },
+              flex: 1,
+              mt: { xs: 3, sm: 0 },
+              mb: { xs: 2, sm: 0 }
             }}
           >
             {currentContent.cards.map((card, index) => (
