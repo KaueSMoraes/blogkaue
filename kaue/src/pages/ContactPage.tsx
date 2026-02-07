@@ -1,9 +1,8 @@
-import React from 'react';
-import { Typography, Box, Card, CardActionArea, Avatar } from '@mui/material';
+import { Typography, Box, Container } from '@mui/material';
 import { useLanguage } from '../contexts/LanguageContext';
-import Breadcrumb from '../components/Breadcrumb';
 import { motion } from 'framer-motion';
-import { FaEnvelope, FaLinkedin, FaGithub, FaTiktok } from 'react-icons/fa';
+import { FaEnvelope, FaLinkedin, FaGithub, FaTiktok, FaPaperPlane, FaArrowRight } from 'react-icons/fa';
+import PageHeader from '../components/PageHeader';
 
 function ContactPage() {
   const { language } = useLanguage();
@@ -11,68 +10,82 @@ function ContactPage() {
   const content = {
     pt: {
       title: "Contato",
-      description: "Entre em contato comigo através dos canais abaixo. Estou sempre aberto a novas oportunidades e conversas sobre tecnologia!",
+      subtitle: "Vamos conversar",
+      description: "Estou sempre aberto a novas oportunidades, projetos interessantes e conversas sobre tecnologia. Escolha seu canal preferido!",
+      cta: "Ou envie um email diretamente",
+      emailSubject: "Contato via Portfolio",
       contacts: [
         {
           name: "Email",
           icon: FaEnvelope,
           color: "#EA4335",
           description: "kauemoraes.dev@gmail.com",
+          subtitle: "Melhor para conversas detalhadas",
           url: "mailto:kauemoraes.dev@gmail.com"
         },
         {
           name: "LinkedIn",
           icon: FaLinkedin,
           color: "#0077B5",
-          description: "kauê-moraes-a23b80173",
+          description: "kauê-moraes",
+          subtitle: "Networking profissional",
           url: "https://www.linkedin.com/in/kau%C3%AA-moraes-a23b80173/"
         },
         {
           name: "GitHub",
           icon: FaGithub,
-          color: "#181717",
+          color: "#ffffff",
           description: "KaueSMoraes",
+          subtitle: "Veja meus projetos",
           url: "https://github.com/KaueSMoraes"
         },
         {
           name: "TikTok",
           icon: FaTiktok,
-          color: "#000000",
+          color: "#ff0050",
           description: "@kauemoraes.dev",
+          subtitle: "Conteúdo sobre programação",
           url: "https://www.tiktok.com/@kauemoraes.dev"
         }
       ]
     },
     en: {
       title: "Contact",
-      description: "Get in touch with me through the channels below. I'm always open to new opportunities and conversations about technology!",
+      subtitle: "Let's talk",
+      description: "I'm always open to new opportunities, interesting projects, and conversations about technology. Choose your preferred channel!",
+      cta: "Or send an email directly",
+      emailSubject: "Contact via Portfolio",
       contacts: [
         {
           name: "Email",
           icon: FaEnvelope,
           color: "#EA4335",
           description: "kauemoraes.dev@gmail.com",
+          subtitle: "Best for detailed conversations",
           url: "mailto:kauemoraes.dev@gmail.com"
         },
         {
           name: "LinkedIn",
           icon: FaLinkedin,
           color: "#0077B5",
-          description: "kauê-moraes-a23b80173",
+          description: "kauê-moraes",
+          subtitle: "Professional networking",
           url: "https://www.linkedin.com/in/kau%C3%AA-moraes-a23b80173/"
         },
         {
           name: "GitHub",
           icon: FaGithub,
-          color: "#181717",
+          color: "#ffffff",
           description: "KaueSMoraes",
+          subtitle: "Check my projects",
           url: "https://github.com/KaueSMoraes"
         },
         {
           name: "TikTok",
           icon: FaTiktok,
-          color: "#000000",
+          color: "#ff0050",
           description: "@kauemoraes.dev",
+          subtitle: "Programming content",
           url: "https://www.tiktok.com/@kauemoraes.dev"
         }
       ]
@@ -81,214 +94,357 @@ function ContactPage() {
 
   const currentContent = content[language];
 
-  const breadcrumbItems = [
-    { label: language === 'pt' ? 'Início' : 'Home', path: '/' },
-    { label: language === 'pt' ? 'Contato' : 'Contact' }
-  ];
-
   const handleContactClick = (url: string) => {
     window.open(url, '_blank', 'noopener,noreferrer');
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-    >
-      <Box sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+    <Box sx={{ minHeight: '100vh', pt: { xs: 10, md: 12 }, pb: 8, overflowX: 'hidden' }}>
+      <Container maxWidth="lg" sx={{ width: '100%', maxWidth: { xs: '100%', sm: '100%', md: 'lg' } }}>
+        {/* Header */}
         <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-        >
-          <Breadcrumb items={breadcrumbItems} />
-        </motion.div>
-        
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 0.6 }}
         >
-          <Typography 
-            variant="h3" 
-            component="h1" 
-            gutterBottom
-            sx={{
-              color: '#ffffff',
-              fontWeight: '700',
-              fontSize: '1.8rem',
-              background: 'linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%)',
-              backgroundClip: 'text',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              textShadow: '0 0 30px rgba(59, 130, 246, 0.3)',
-              letterSpacing: '0.5px',
-              mb: 1.5
-            }}
-          >
-            {currentContent.title}
-          </Typography>
-        </motion.div>
-        
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-        >
-          <Typography 
-            variant="body1"
-            sx={{
-              color: '#e2e8f0',
-              fontSize: '1rem',
-              lineHeight: 1.6,
-              textShadow: '0 2px 10px rgba(0, 0, 0, 0.5)',
-              letterSpacing: '0.3px',
-              mb: 3
-            }}
-          >
-            {currentContent.description}
-          </Typography>
+          <Box sx={{ textAlign: 'center', mb: 8, px: { xs: '1rem', sm: '1rem', md: 0 }, overflowX: 'hidden' }}>
+            <Typography
+              variant="h1"
+              sx={{
+                fontSize: { xs: '1.5rem', sm: '2.5rem', md: '3.5rem' },
+                fontWeight: 800,
+                background: 'linear-gradient(135deg, #ffffff 0%, #94a3b8 100%)',
+                backgroundClip: 'text',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                mb: 2,
+                wordBreak: 'break-word',
+                overflowWrap: 'break-word',
+              }}
+            >
+              {currentContent.title}
+            </Typography>
+            <Typography
+              sx={{
+                fontSize: { xs: '1.2rem', sm: '1.1rem', md: '1.3rem' },
+                color: '#10b981',
+                fontWeight: 500,
+                mb: 2,
+                px: { xs: 1, sm: 0 },
+              }}
+            >
+              {currentContent.subtitle}
+            </Typography>
+            <Typography
+              sx={{
+                maxWidth: '600px',
+                mx: 'auto',
+                color: '#64748b',
+                fontSize: { xs: '0.85rem', sm: '1rem' },
+                lineHeight: 1.7,
+                px: { xs: 2, sm: 0 },
+              }}
+            >
+              {currentContent.description}
+            </Typography>
+          </Box>
         </motion.div>
 
-      <Box sx={{ 
-        flex: 1, 
-        overflowY: 'auto', 
-        pr: 1,
-        pt: 1,
-        '&::-webkit-scrollbar': {
-          width: '4px',
-        },
-        '&::-webkit-scrollbar-track': {
-          background: 'rgba(255, 255, 255, 0.1)',
-          borderRadius: '2px',
-        },
-        '&::-webkit-scrollbar-thumb': {
-          background: 'linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%)',
-          borderRadius: '2px',
-        },
-        '&::-webkit-scrollbar-thumb:hover': {
-          background: 'linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%)',
-        }
-      }}>
-        <Box sx={{ 
-          display: 'grid', 
-          gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' }, 
-          gap: 2 
-        }}>
-          {currentContent.contacts.map((contact, index) => (
-            <Box key={index}>
-              <Card
-                sx={{
-                  background: 'linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(51, 65, 85, 0.6) 100%)',
-                  backdropFilter: 'blur(10px)',
-                  border: '1px solid rgba(59, 130, 246, 0.2)',
-                  borderRadius: '16px',
-                  boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
-                  transition: 'all 0.3s ease',
-                  height: '100%',
-                  '&:hover': {
-                    transform: 'translateY(-8px)',
-                    boxShadow: '0 12px 40px rgba(59, 130, 246, 0.2)',
-                    border: '1px solid rgba(59, 130, 246, 0.4)',
-                    '&::before': {
-                      opacity: 1
-                    }
-                  },
-                  '&::before': {
-                    content: '""',
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    height: '3px',
-                    background: `linear-gradient(90deg, ${contact.color}, #3b82f6)`,
-                    opacity: 0,
-                    transition: 'opacity 0.3s ease',
-                    borderRadius: '16px 16px 0 0'
-                  }
-                }}
+        {/* Contact Cards Grid */}
+        <Box
+          sx={{
+            display: 'grid',
+            gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr', lg: '1fr 1fr 1fr 1fr' },
+            gap: 3,
+            mb: 10,
+            px: { xs: '1rem', sm: 0 },
+          }}
+        >
+          {currentContent.contacts.map((contact, index) => {
+            const Icon = contact.icon;
+            return (
+              <motion.div
+                key={contact.name}
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ y: -10 }}
+                onClick={() => handleContactClick(contact.url)}
+                style={{ cursor: 'pointer' }}
               >
-                <CardActionArea 
-                  onClick={() => handleContactClick(contact.url)}
-                  sx={{ 
-                    height: '100%', 
+                <Box
+                  sx={{
+                    p: { xs: 2, md: 4 },
+                    borderRadius: '24px',
+                    background: 'rgba(15, 15, 25, 0.6)',
+                    backdropFilter: 'blur(20px)',
+                    border: '1px solid rgba(255, 255, 255, 0.08)',
+                    height: '100%',
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
-                    justifyContent: 'center',
-                    p: 3,
-                    textAlign: 'center'
+                    textAlign: 'center',
+                    position: 'relative',
+                    overflow: 'hidden',
+                    transition: 'all 0.4s ease',
+                    '&:hover': {
+                      border: `1px solid ${contact.color}40`,
+                      boxShadow: `0 25px 80px ${contact.color}15`,
+                      '& .contact-icon': {
+                        transform: 'scale(1.1) rotate(5deg)',
+                        boxShadow: `0 20px 50px ${contact.color}40`,
+                      },
+                      '& .contact-glow': {
+                        opacity: 0.6,
+                      },
+                      '& .contact-arrow': {
+                        opacity: 1,
+                        transform: 'translateX(5px)',
+                      },
+                    },
                   }}
                 >
-                  <Avatar
+                  {/* Background glow */}
+                  <Box
+                    className="contact-glow"
+                    sx={{
+                      position: 'absolute',
+                      top: '-100px',
+                      left: '50%',
+                      transform: 'translateX(-50%)',
+                      width: '200px',
+                      height: '200px',
+                      borderRadius: '50%',
+                      background: `radial-gradient(circle, ${contact.color}30 0%, transparent 70%)`,
+                      opacity: 0,
+                      transition: 'opacity 0.4s ease',
+                      pointerEvents: 'none',
+                    }}
+                  />
+
+                  {/* Icon */}
+                  <Box
+                    className="contact-icon"
                     sx={{
                       width: 80,
                       height: 80,
-                      mb: 2,
-                      background: `linear-gradient(135deg, ${contact.color} 0%, ${contact.color}CC 100%)`,
-                      fontSize: '2.5rem',
-                      boxShadow: `0 8px 25px ${contact.color}40`,
-                      color: '#ffffff'
+                      borderRadius: '24px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      background: `linear-gradient(135deg, ${contact.color}25 0%, ${contact.color}10 100%)`,
+                      border: `1px solid ${contact.color}30`,
+                      mb: 3,
+                      transition: 'all 0.4s ease',
                     }}
                   >
-                    {React.createElement(contact.icon)}
-                  </Avatar>
-                  
-                  <Typography 
-                    variant="h5" 
-                    component="h2"
+                    <Icon size={32} color={contact.color} />
+                  </Box>
+
+                  {/* Name */}
+                  <Typography
+                    variant="h5"
                     sx={{
+                      fontWeight: 700,
                       color: '#ffffff',
-                      fontWeight: '700',
-                      fontSize: '1.4rem',
+                      fontSize: '1.3rem',
                       mb: 1,
-                      background: 'linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%)',
-                      backgroundClip: 'text',
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                      textShadow: '0 0 20px rgba(59, 130, 246, 0.3)',
-                      letterSpacing: '0.5px'
                     }}
                   >
                     {contact.name}
                   </Typography>
-                  
-                  <Typography 
-                    variant="body1"
+
+                  {/* Description */}
+                  <Typography
                     sx={{
-                      color: '#a1a1aa',
-                      fontSize: '0.9rem',
-                      lineHeight: 1.5,
-                      textShadow: '0 2px 10px rgba(0, 0, 0, 0.5)',
-                      letterSpacing: '0.2px',
-                      wordBreak: 'break-all'
+                      color: contact.color,
+                      fontSize: '0.95rem',
+                      fontWeight: 500,
+                      mb: 1,
+                      wordBreak: 'break-all',
                     }}
                   >
                     {contact.description}
                   </Typography>
-                  
-                  <Typography 
-                    variant="body2"
+
+                  {/* Subtitle */}
+                  <Typography
                     sx={{
-                      color: '#3b82f6',
-                      fontSize: '0.8rem',
-                      mt: 2,
-                      fontWeight: '600',
-                      textTransform: 'uppercase',
-                      letterSpacing: '1px'
+                      color: '#64748b',
+                      fontSize: '0.85rem',
+                      mb: 2,
                     }}
                   >
-                    {language === 'pt' ? 'Clique para acessar' : 'Click to access'}
+                    {contact.subtitle}
                   </Typography>
-                </CardActionArea>
-              </Card>
-            </Box>
-          ))}
+
+                  {/* Arrow indicator */}
+                  <Box
+                    className="contact-arrow"
+                    sx={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: 0.5,
+                      color: contact.color,
+                      opacity: 0.5,
+                      transition: 'all 0.3s ease',
+                    }}
+                  >
+                    <Typography sx={{ fontSize: '0.8rem', fontWeight: 600 }}>
+                      {language === 'pt' ? 'Acessar' : 'Access'}
+                    </Typography>
+                    <FaArrowRight size={12} />
+                  </Box>
+                </Box>
+              </motion.div>
+            );
+          })}
         </Box>
-      </Box>
+
+        {/* CTA Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <Box
+            sx={{
+              p: { xs: 2, md: 8 },
+              borderRadius: '32px',
+              background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%)',
+              border: '1px solid rgba(16, 185, 129, 0.2)',
+              textAlign: 'center',
+              position: 'relative',
+              overflow: 'hidden',
+              mx: { xs: '1rem', sm: 0 },
+            }}
+          >
+            {/* Background decoration */}
+            <Box
+              sx={{
+                position: 'absolute',
+                top: '-50%',
+                right: '-10%',
+                width: '400px',
+                height: '400px',
+                borderRadius: '50%',
+                background: 'radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 70%)',
+                pointerEvents: 'none',
+              }}
+            />
+            <Box
+              sx={{
+                position: 'absolute',
+                bottom: '-30%',
+                left: '-5%',
+                width: '300px',
+                height: '300px',
+                borderRadius: '50%',
+                background: 'radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%)',
+                pointerEvents: 'none',
+              }}
+            />
+
+            <Box sx={{ position: 'relative', zIndex: 1 }}>
+              <motion.div
+                animate={{
+                  y: [0, -10, 0],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              >
+                <Box
+                  sx={{
+                    width: 80,
+                    height: 80,
+                    borderRadius: '24px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    background: 'linear-gradient(135deg, #10b981 0%, #3b82f6 100%)',
+                    mx: 'auto',
+                    mb: 4,
+                    boxShadow: '0 20px 60px rgba(16, 185, 129, 0.3)',
+                  }}
+                >
+                  <FaPaperPlane size={32} color="#ffffff" />
+                </Box>
+              </motion.div>
+
+              <Typography
+                variant="h3"
+                sx={{
+                  fontWeight: 700,
+                  fontSize: { xs: '1.4rem', md: '2.5rem' },
+                  color: '#ffffff',
+                  mb: 2,
+                  wordBreak: 'break-word',
+                  overflowWrap: 'break-word',
+                }}
+              >
+                {currentContent.cta}
+              </Typography>
+
+              <Typography
+                sx={{
+                  color: '#94a3b8',
+                  fontSize: { xs: '0.8rem', md: '1.1rem' },
+                  mb: 4,
+                  maxWidth: '500px',
+                  mx: 'auto',
+                  px: { xs: 1, md: 0 },
+                }}
+              >
+                {language === 'pt'
+                  ? 'Respondo todas as mensagens em até 24 horas.'
+                  : 'I respond to all messages within 24 hours.'}
+              </Typography>
+
+              <motion.button
+                onClick={() => handleContactClick('mailto:kauemoraes.dev@gmail.com')}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.75rem',
+                  padding: '1.2rem 2.5rem',
+                  fontSize: '1.1rem',
+                  fontWeight: 600,
+                  color: '#ffffff',
+                  background: 'linear-gradient(135deg, #10b981 0%, #3b82f6 100%)',
+                  border: 'none',
+                  borderRadius: '50px',
+                  cursor: 'pointer',
+                  boxShadow: '0 15px 50px rgba(16, 185, 129, 0.3)',
+                }}
+              >
+                <FaEnvelope size={20} />
+                {language === 'pt' ? 'Enviar Email' : 'Send Email'}
+              </motion.button>
+            </Box>
+          </Box>
+        </motion.div>
+
+        {/* Location info */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <Box sx={{ textAlign: 'center', mt: { xs: 4, md: 2 } }}>
+            <Typography sx={{ color: '#64748b', fontSize: '0.95rem' }}>
+              📍 {language === 'pt' ? 'Baseado no Brasil, trabalhando remotamente para o mundo' : 'Based in Brazil, working remotely for the world'}
+            </Typography>
+          </Box>
+        </motion.div>
+      </Container>
     </Box>
-    </motion.div>
   );
 }
 

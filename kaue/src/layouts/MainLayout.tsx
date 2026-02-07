@@ -1,117 +1,191 @@
-import React from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import { Box } from '@mui/material';
-import Avatar from '../components/Avatar';
+import Navbar from '../components/Navbar';
 import LanguageToggle from '../components/LanguageToggle';
-
-const layoutStyle = {
-  height: '100vh', 
-  width: '100vw',
-  background: 'linear-gradient(135deg, #0f0f23 0%, #1a1a2e 25%, #16213e 50%, #0f0f23 75%, #000000 100%)',
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  justifyContent: 'flex-start',
-  padding: '0.5rem',
-  paddingTop: '1rem',
-  position: 'relative',
-  overflow: 'hidden',
-  boxSizing: 'border-box'
-};
-const contentStyle = {
-    background: 'linear-gradient(145deg, rgba(30, 30, 60, 0.9) 0%, rgba(20, 20, 40, 0.95) 100%)',
-    padding: '0',
-    borderRadius: '16px',
-    border: '1px solid rgba(255, 255, 255, 0.1)',
-    boxShadow: '0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(59, 130, 246, 0.1)',
-    width: '100%',
-    maxWidth: '1200px',
-    height: 'calc(103vh - 16rem)',
-    backdropFilter: 'blur(20px)',
-    position: 'relative',
-    overflow: 'hidden',
-    display: 'flex',
-    flexDirection: 'column',
-    boxSizing: 'border-box'
-};
+import { motion, AnimatePresence } from 'framer-motion';
 
 function MainLayout() {
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
+
   return (
-    <div style={layoutStyle as React.CSSProperties}>
+    <Box
+      sx={{
+        minHeight: '100vh',
+        width: '100%',
+        background: 'linear-gradient(180deg, #0a0a0f 0%, #0f0f1a 50%, #0a0a0f 100%)',
+        position: 'relative',
+        overflow: 'hidden',
+      }}
+    >
+      {/* Animated background elements */}
       <Box
         sx={{
-          position: 'absolute',
+          position: 'fixed',
           top: 0,
           left: 0,
           right: 0,
           bottom: 0,
-          background: 'linear-gradient(135deg, #0f0f23 0%, #1a1a2e 25%, #16213e 50%, #0f0f23 75%, #000000 100%)',
           pointerEvents: 'none',
-          zIndex: 0
-        }}
-      />
-      
-      <Box
-        sx={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          background: `
-            radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
-            radial-gradient(circle at 80% 20%, rgba(147, 51, 234, 0.1) 0%, transparent 50%),
-            radial-gradient(circle at 40% 40%, rgba(16, 185, 129, 0.05) 0%, transparent 50%)
-          `,
-          pointerEvents: 'none',
-          zIndex: 1
-        }}
-      />
-      
-      <Box
-        sx={{
-          position: 'absolute',
-          top: '1rem',
-          right: '1rem',
-          zIndex: 1000
+          zIndex: 0,
+          overflow: 'hidden',
         }}
       >
-        <LanguageToggle />
-      </Box>
-      
-      <Box sx={{ position: 'relative', zIndex: 2 }}>
-        <Avatar 
-          imageUrl="https://avatars.githubusercontent.com/u/126820310?s=400&u=f783a115f514da69261c663b4b6014152a43d3b0&v=4" 
-          name="Kauê Moraes - FullStack Developer" 
+        {/* Gradient orbs */}
+        <motion.div
+          animate={{
+            x: [0, 100, 0],
+            y: [0, -50, 0],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+          style={{
+            position: 'absolute',
+            top: '-20%',
+            left: '-10%',
+            width: '600px',
+            height: '600px',
+            borderRadius: '50%',
+            background: 'radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%)',
+            filter: 'blur(60px)',
+          }}
         />
-        <main style={contentStyle as React.CSSProperties}>
-          <Box
-            sx={{
-              height: '100%',
-              overflowY: 'auto',
-              overflowX: 'hidden',
-              padding: '1rem',
-              '&::-webkit-scrollbar': {
-                width: '4px',
-              },
-              '&::-webkit-scrollbar-track': {
-                background: 'rgba(255, 255, 255, 0.1)',
-                borderRadius: '2px',
-              },
-              '&::-webkit-scrollbar-thumb': {
-                background: 'linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%)',
-                borderRadius: '2px',
-                '&:hover': {
-                  background: 'linear-gradient(135deg, #2563eb 0%, #1e40af 100%)',
-                }
-              }
+        <motion.div
+          animate={{
+            x: [0, -80, 0],
+            y: [0, 100, 0],
+          }}
+          transition={{
+            duration: 25,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+          style={{
+            position: 'absolute',
+            top: '30%',
+            right: '-10%',
+            width: '500px',
+            height: '500px',
+            borderRadius: '50%',
+            background: 'radial-gradient(circle, rgba(139, 92, 246, 0.12) 0%, transparent 70%)',
+            filter: 'blur(60px)',
+          }}
+        />
+        <motion.div
+          animate={{
+            x: [0, 50, 0],
+            y: [0, -80, 0],
+          }}
+          transition={{
+            duration: 30,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+          style={{
+            position: 'absolute',
+            bottom: '-10%',
+            left: '30%',
+            width: '400px',
+            height: '400px',
+            borderRadius: '50%',
+            background: 'radial-gradient(circle, rgba(6, 182, 212, 0.1) 0%, transparent 70%)',
+            filter: 'blur(60px)',
+          }}
+        />
+
+        {/* Grid pattern */}
+        <Box
+          sx={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundImage: `
+              linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px)
+            `,
+            backgroundSize: '60px 60px',
+            opacity: 0.5,
+          }}
+        />
+
+        {/* Floating particles */}
+        {[...Array(20)].map((_, i) => (
+          <motion.div
+            key={i}
+            animate={{
+              y: [0, -30, 0],
+              opacity: [0.2, 0.5, 0.2],
             }}
+            transition={{
+              duration: 3 + Math.random() * 4,
+              repeat: Infinity,
+              delay: Math.random() * 2,
+              ease: "easeInOut",
+            }}
+            style={{
+              position: 'absolute',
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+              width: '2px',
+              height: '2px',
+              borderRadius: '50%',
+              background: i % 3 === 0 ? '#3b82f6' : i % 3 === 1 ? '#8b5cf6' : '#06b6d4',
+              boxShadow: `0 0 ${4 + Math.random() * 6}px currentColor`,
+            }}
+          />
+        ))}
+      </Box>
+
+      {/* Language Toggle - Fixed position top left */}
+      <Box
+        sx={{
+          position: 'fixed',
+          top: { xs: '1rem', sm: '1.5rem' },
+          left: { xs: '1rem', sm: '1.5rem' },
+          zIndex: 1001,
+        }}
+      >
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.3, delay: 0.2 }}
+        >
+          <LanguageToggle />
+        </motion.div>
+      </Box>
+
+      {/* Navigation - only show on non-home pages */}
+      {!isHomePage && <Navbar />}
+
+      {/* Main content */}
+      <Box
+        component="main"
+        sx={{
+          position: 'relative',
+          zIndex: 1,
+          minHeight: '100vh',
+          width: '100%',
+        }}
+      >
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={location.pathname}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+            style={{ minHeight: '100vh' }}
           >
             <Outlet />
-          </Box>
-        </main>
+          </motion.div>
+        </AnimatePresence>
       </Box>
-    </div>
+    </Box>
   );
 }
 
