@@ -2,7 +2,7 @@ import { Typography, Box, Container } from '@mui/material';
 import { useLanguage } from '../contexts/LanguageContext';
 import { motion } from 'framer-motion';
 import { FaEnvelope, FaLinkedin, FaGithub, FaTiktok, FaPaperPlane, FaArrowRight } from 'react-icons/fa';
-import PageHeader from '../components/PageHeader';
+
 
 function ContactPage() {
   const { language } = useLanguage();

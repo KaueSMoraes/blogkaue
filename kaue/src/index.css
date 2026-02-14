@@ -108,6 +108,13 @@ a:hover {
   border: 1px solid var(--glass-border);
 }
 
+@media (max-width: 768px) {
+  .glass {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+}
+
 /* Animations */
 @keyframes float {
   0%, 100% {
@@ -245,6 +252,22 @@ a:hover {
   animation: blob 8s ease-in-out infinite;
 }
 
+/* Pause heavy infinite animations on mobile */
+@media (max-width: 768px) {
+  .animate-float,
+  .animate-pulse-glow,
+  .animate-spin-slow,
+  .animate-shimmer,
+  .animate-blob {
+    animation: none !important;
+  }
+
+  .animate-gradient {
+    animation: none !important;
+    background-size: 100% 100%;
+  }
+}
+
 /* Hover effects */
 .hover-lift {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -321,10 +344,31 @@ button:focus-visible {
   color: white;
 }
 
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 /* Responsive utilities */
 @media (max-width: 768px) {
   :root {
     font-size: 14px;
+  }
+
+  /* Reduce heavy blur effects on mobile for better performance */
+  * {
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+  }
+
+  /* Stop inline gradient-shift animations on mobile */
+  *[style*="gradient-shift"] {
+    animation: none !important;
   }
 }
 

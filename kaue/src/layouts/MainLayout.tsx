@@ -1,5 +1,5 @@
 import { Outlet, useLocation } from 'react-router-dom';
-import { Box } from '@mui/material';
+import { Box, useMediaQuery } from '@mui/material';
 import Navbar from '../components/Navbar';
 import LanguageToggle from '../components/LanguageToggle';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -7,6 +7,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 function MainLayout() {
   const location = useLocation();
   const isHomePage = location.pathname === '/';
+  const isMobile = useMediaQuery('(max-width: 768px)');
+  const prefersReducedMotion = useMediaQuery('(prefers-reduced-motion: reduce)');
+  const reduceAnimations = isMobile || prefersReducedMotion;
 
   return (
     <Box
@@ -31,70 +34,101 @@ function MainLayout() {
           overflow: 'hidden',
         }}
       >
-        {/* Gradient orbs */}
-        <motion.div
-          animate={{
-            x: [0, 100, 0],
-            y: [0, -50, 0],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          style={{
-            position: 'absolute',
-            top: '-20%',
-            left: '-10%',
-            width: '600px',
-            height: '600px',
-            borderRadius: '50%',
-            background: 'radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%)',
-            filter: 'blur(60px)',
-          }}
-        />
-        <motion.div
-          animate={{
-            x: [0, -80, 0],
-            y: [0, 100, 0],
-          }}
-          transition={{
-            duration: 25,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          style={{
-            position: 'absolute',
-            top: '30%',
-            right: '-10%',
-            width: '500px',
-            height: '500px',
-            borderRadius: '50%',
-            background: 'radial-gradient(circle, rgba(139, 92, 246, 0.12) 0%, transparent 70%)',
-            filter: 'blur(60px)',
-          }}
-        />
-        <motion.div
-          animate={{
-            x: [0, 50, 0],
-            y: [0, -80, 0],
-          }}
-          transition={{
-            duration: 30,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          style={{
-            position: 'absolute',
-            bottom: '-10%',
-            left: '30%',
-            width: '400px',
-            height: '400px',
-            borderRadius: '50%',
-            background: 'radial-gradient(circle, rgba(6, 182, 212, 0.1) 0%, transparent 70%)',
-            filter: 'blur(60px)',
-          }}
-        />
+        {/* Gradient orbs - static on mobile, animated on desktop */}
+        {reduceAnimations ? (
+          <>
+            <div
+              style={{
+                position: 'absolute',
+                top: '-20%',
+                left: '-10%',
+                width: '400px',
+                height: '400px',
+                borderRadius: '50%',
+                background: 'radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%)',
+                filter: 'blur(40px)',
+              }}
+            />
+            <div
+              style={{
+                position: 'absolute',
+                top: '30%',
+                right: '-10%',
+                width: '350px',
+                height: '350px',
+                borderRadius: '50%',
+                background: 'radial-gradient(circle, rgba(139, 92, 246, 0.08) 0%, transparent 70%)',
+                filter: 'blur(40px)',
+              }}
+            />
+          </>
+        ) : (
+          <>
+            <motion.div
+              animate={{
+                x: [0, 100, 0],
+                y: [0, -50, 0],
+              }}
+              transition={{
+                duration: 20,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              style={{
+                position: 'absolute',
+                top: '-20%',
+                left: '-10%',
+                width: '600px',
+                height: '600px',
+                borderRadius: '50%',
+                background: 'radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%)',
+                filter: 'blur(60px)',
+              }}
+            />
+            <motion.div
+              animate={{
+                x: [0, -80, 0],
+                y: [0, 100, 0],
+              }}
+              transition={{
+                duration: 25,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              style={{
+                position: 'absolute',
+                top: '30%',
+                right: '-10%',
+                width: '500px',
+                height: '500px',
+                borderRadius: '50%',
+                background: 'radial-gradient(circle, rgba(139, 92, 246, 0.12) 0%, transparent 70%)',
+                filter: 'blur(60px)',
+              }}
+            />
+            <motion.div
+              animate={{
+                x: [0, 50, 0],
+                y: [0, -80, 0],
+              }}
+              transition={{
+                duration: 30,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              style={{
+                position: 'absolute',
+                bottom: '-10%',
+                left: '30%',
+                width: '400px',
+                height: '400px',
+                borderRadius: '50%',
+                background: 'radial-gradient(circle, rgba(6, 182, 212, 0.1) 0%, transparent 70%)',
+                filter: 'blur(60px)',
+              }}
+            />
+          </>
+        )}
 
         {/* Grid pattern */}
         <Box
@@ -113,8 +147,8 @@ function MainLayout() {
           }}
         />
 
-        {/* Floating particles */}
-        {[...Array(20)].map((_, i) => (
+        {/* Floating particles - only on desktop */}
+        {!reduceAnimations && [...Array(20)].map((_, i) => (
           <motion.div
             key={i}
             animate={{
