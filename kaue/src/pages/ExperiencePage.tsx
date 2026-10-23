@@ -128,6 +128,34 @@ function ExperiencePage() {
       description: "Throughout my career, I have had the opportunity to work with various technologies and methodologies, always seeking to specialize in high-quality software development.",
       companies: [
         {
+          name: "Porto Seguro",
+          logo: "/images/logoporto.jpg",
+          position: "Senior Software Engineer",
+          period: "Apr 2025 - Present",
+          location: "São Paulo, Brazil · Hybrid",
+          description: "Senior Software Engineer responsible for the logistics system, participating in the full development cycle in an agile environment and collaborating on technical decisions.",
+          details: [
+            "Development of APIs and microservices with .NET/C# and Node.js",
+            "Maintenance of legacy WebForms applications",
+            "Full-stack development: backend and frontend web",
+            "Infrastructure administration on Google Cloud Platform (GCP) and Firebase",
+            "Execution of deploys and ensuring stability in cloud and container environments",
+            "Design and optimization of Oracle databases",
+            "Improvement of CI/CD pipeline using Jenkins and GitLab"
+          ],
+          technologies: [
+            { name: '.NET', icon: SiDotnet, color: '#512BD4' },
+            { name: 'C#', icon: TbBrandCSharp, color: '#239120' },
+            { name: 'Node.js', color: '#68A063' },
+            { name: 'Google Cloud', icon: SiGooglecloud, color: '#4285F4' },
+            { name: 'Docker', icon: SiDocker, color: '#2496ED' },
+            { name: 'Kubernetes', icon: SiKubernetes, color: '#326CE5' },
+            { name: 'Oracle', color: '#F80000' },
+            { name: 'Jenkins', color: '#D24939' }
+          ],
+          color: '#dc2626'
+        },
+        {
           name: "Platform Builders",
           logo: "/images/platformbuilders_logo.jpg",
           position: "Mid-Level Backend Developer",
