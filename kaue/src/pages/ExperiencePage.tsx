@@ -21,10 +21,38 @@ function ExperiencePage() {
       description: "Ao longo da minha carreira, tive a oportunidade de trabalhar com diversas tecnologias e metodologias, sempre buscando me especializar em desenvolvimento de software de alta qualidade.",
       companies: [
         {
+          name: "Porto Seguro",
+          logo: "/images/logoporto.jpg",
+          position: "Engenheiro de Software Sr",
+          period: "Abr 2025 - Presente",
+          location: "São Paulo, Brasil · Híbrido",
+          description: "Engenheiro de Software Sênior responsável pelo sistema logístico, participando de todo o ciclo de desenvolvimento em um ambiente ágil e colaborando nas decisões técnicas.",
+          details: [
+            "Desenvolvimento de APIs e microsserviços com .NET/C# e Node.js",
+            "Manutenção de aplicações WebForms legadas",
+            "Desenvolvimento full-stack: backend e frontend web",
+            "Administração de infraestrutura na Google Cloud Platform (GCP) e Firebase",
+            "Execução de deploys e garantia de estabilidade em ambientes cloud e containers",
+            "Projeto e otimização de bancos de dados Oracle",
+            "Aprimoramento de esteira CI/CD utilizando Jenkins e GitLab"
+          ],
+          technologies: [
+            { name: '.NET', icon: SiDotnet, color: '#512BD4' },
+            { name: 'C#', icon: TbBrandCSharp, color: '#239120' },
+            { name: 'Node.js', color: '#68A063' },
+            { name: 'Google Cloud', icon: SiGooglecloud, color: '#4285F4' },
+            { name: 'Docker', icon: SiDocker, color: '#2496ED' },
+            { name: 'Kubernetes', icon: SiKubernetes, color: '#326CE5' },
+            { name: 'Oracle', color: '#F80000' },
+            { name: 'Jenkins', color: '#D24939' }
+          ],
+          color: '#dc2626'
+        },
+        {
           name: "Platform Builders",
           logo: "/images/platformbuilders_logo.jpg",
           position: "Backend Developer Pleno",
-          period: "2025 - Presente",
+          period: "Jan 2025 - Abr 2025",
           location: "Remoto",
           description: "Desenvolvedor Backend especialista no ecossistema .NET/C# para construir e manter microsserviços escaláveis.",
           details: [
@@ -103,7 +131,7 @@ function ExperiencePage() {
           name: "Platform Builders",
           logo: "/images/platformbuilders_logo.jpg",
           position: "Mid-Level Backend Developer",
-          period: "2025 - Present",
+          period: "Jan 2025 - Apr 2025",
           location: "Remote",
           description: "Backend Developer specializing in the .NET/C# ecosystem to build and maintain scalable microservices.",
           details: [
