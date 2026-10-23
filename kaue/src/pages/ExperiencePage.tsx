@@ -22,6 +22,7 @@ function ExperiencePage() {
       companies: [
         {
           name: "Platform Builders",
+          logo: "/images/platformbuilders_logo.jpg",
           position: "Backend Developer Pleno",
           period: "2025 - Presente",
           location: "Remoto",
@@ -46,6 +47,7 @@ function ExperiencePage() {
         },
         {
           name: "Agenda Assessoria",
+          logo: "/images/agendaassessoria_logo.jpg",
           position: "Desenvolvedor Full Stack",
           period: "Out 2024 - Jan 2025",
           location: "Remoto",
@@ -69,6 +71,7 @@ function ExperiencePage() {
         },
         {
           name: "Agro Amazônia PA S.A.",
+          logo: "/images/agroamazonia_logo.jpg",
           position: "Analista de Suporte",
           period: "Jan 2021 - Out 2024",
           location: "Belém, PA",
@@ -98,6 +101,7 @@ function ExperiencePage() {
       companies: [
         {
           name: "Platform Builders",
+          logo: "/images/platformbuilders_logo.jpg",
           position: "Mid-Level Backend Developer",
           period: "2025 - Present",
           location: "Remote",
@@ -122,6 +126,7 @@ function ExperiencePage() {
         },
         {
           name: "Agenda Assessoria",
+          logo: "/images/agendaassessoria_logo.jpg",
           position: "Full Stack Developer",
           period: "Oct 2024 - Jan 2025",
           location: "Remote",
@@ -145,6 +150,7 @@ function ExperiencePage() {
         },
         {
           name: "Agro Amazônia PA S.A.",
+          logo: "/images/agroamazonia_logo.jpg",
           position: "Support Analyst",
           period: "Jan 2021 - Oct 2024",
           location: "Belém, PA",
@@ -260,7 +266,21 @@ function ExperiencePage() {
                     >
                       {/* Header */}
                       <Box sx={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', mb: 2 }}>
-                        <Box>
+                        <Box sx={{ flex: 1 }}>
+                          {/* Logo */}
+                          {'logo' in company && (
+                            <Box sx={{ mb: 2 }}>
+                              <img
+                                src={company.logo}
+                                alt={company.name}
+                                style={{
+                                  height: '50px',
+                                  objectFit: 'contain',
+                                  maxWidth: '150px',
+                                }}
+                              />
+                            </Box>
+                          )}
                           <Typography
                             variant="h5"
                             sx={{
