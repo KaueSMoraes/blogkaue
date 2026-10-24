@@ -109,7 +109,7 @@ function HomePage() {
               }}
             >
               <motion.img
-                src="https://avatars.githubusercontent.com/u/126820310?s=400&u=f783a115f514da69261c663b4b6014152a43d3b0&v=4"
+                src="/fotokaue.jpg"
                 alt="Kauê Moraes"
                 style={{
                   width: '160px',
